@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "898971477013",
+    "project_id": "xtwitter-flutter-clone",
+    "storage_bucket": "xtwitter-flutter-clone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898971477013:android:4fb004dd14b631e2dcda1c",
+        "android_client_info": {
+          "package_name": "com.example.twitter_clone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDDHfK6AgKKja1PlaoL0qdcMUuwJwcXTQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
