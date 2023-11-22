@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:twitter_clone/screens/user_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -39,7 +40,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         leading: IconButton(
           icon: const Icon(Icons.person),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const UserScreen(),
+              ),
+            );
+          },
           iconSize: 40,
         ),
         actions: [
