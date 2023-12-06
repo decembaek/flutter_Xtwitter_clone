@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:twitter_clone/models/tistory_list_model.dart';
 import 'package:twitter_clone/screens/user_screen.dart';
+import 'package:twitter_clone/services/tistory_api_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -9,6 +11,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  late Future<TistoryContentList> tistory;
+
   bool isRecommendActive = true;
   bool isFollowActive = false;
 
@@ -27,13 +31,20 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    tistory = TistoryApiService.getTistoryList();
+    print(tistory);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         toolbarHeight: 60,
         elevation: 2,
-        backgroundColor: Colors.black,
+        backgroundColor: Theme.of(context).colorScheme.background,
         title: const Icon(
           Icons.clear_outlined,
           size: 50,
@@ -110,8 +121,64 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 0.5,
             color: Colors.white,
           ),
+          const Text(
+            "hi",
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.white,
+            ),
+          ),
+          FutureBuilder(
+            future: tistory,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Column(
+                  children: [
+                    Text(
+                      snapshot.data!.url,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      snapshot.data!.count,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      snapshot.data!.page,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Text(
+                      snapshot.data!.page,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                );
+              }
+              return const Text(
+                "...loading...",
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                ),
+              );
+            },
+          )
         ],
       ),
     );
   }
 }
+
+// 해야할것,
+// ListView로 티스토리 리스트 받기 
